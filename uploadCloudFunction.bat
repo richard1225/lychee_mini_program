@@ -1,0 +1,1 @@
+"C:\Program Files (x86)\Tencent\微信web开发者工具\cli.bat" cloud functions deploy --e cloud1-1gxd7jqjfae42946 --n quickstartFunctions --r --project "C:\Users\richardoye\Desktop\workSpace\miniProgram\lycheeTool"
