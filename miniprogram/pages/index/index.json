@@ -1,6 +1,6 @@
 {
   "usingComponents": {
     "cloud-tip-modal": "/components/cloudTipModal/index",
-    "l-button":"/node_modules/lin-ui/button/index"
+    "l-button":"/miniprogram_npm/lin-ui/button/index"
   }
 }
