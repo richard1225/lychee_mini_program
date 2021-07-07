@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-tabbar": "@vant/weapp/tabbar/index",
+    "van-empty": "/miniprogram_npm/@vant/weapp/empty/index",
+    "van-tabbar-item": "@vant/weapp/tabbar-item/index",
+    "custom-tab-bar": "/components/customTabBar/index"
+  }
+}

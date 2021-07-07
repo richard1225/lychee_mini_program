@@ -11,8 +11,20 @@
     "pages/updateRecordResult/index",
     "pages/updateRecordSuccess/index",
     "pages/sumRecord/index",
-    "pages/sumRecordResult/index"
+    "pages/sumRecordResult/index",
+    "pages/sellWord/index"
   ],
+  "usingComponents": {
+    "van-sticky": "/miniprogram_npm/@vant/weapp/sticky/index"
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [{
+      "pagePath": "pages/index/index"
+    }, {
+      "pagePath": "pages/sellWord/index"
+    }]
+  },
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
@@ -20,6 +32,5 @@
     "navigationBarTitleText": "一颗荔枝小助手",
     "navigationBarTextStyle": "black"
   },
-  "sitemapLocation": "sitemap.json",
-  "style": "v2"
+  "sitemapLocation": "sitemap.json"
 }

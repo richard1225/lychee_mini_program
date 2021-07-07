@@ -63,6 +63,10 @@ Page({
     haveCreateCollection: false
   },
 
+  changeTabs(e){
+    console.log(e)
+  },
+  
   onClickPowerInfo(e) {
     const index = e.currentTarget.dataset.index
     const powerList = this.data.powerList

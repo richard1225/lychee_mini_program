@@ -1,9 +1,12 @@
 /**index.wxss**/
 
 page {
-  padding-top: 54rpx;
   background-color: #f6f6f6;
   padding-bottom: 60rpx;
+}
+
+.container{
+  margin-bottom: 80px;
 }
 
 .title {
@@ -12,6 +15,18 @@ page {
   color: #000000;
   font-size: 44rpx;
   margin-bottom: 40rpx;
+}
+
+.sell-word-content-card{
+  margin-top: 20rpx;
+}
+
+.tabs-wrapper{
+  width: 100%;
+}
+
+.search-bar-top {
+  width: 100%;
 }
 
 .top_tip {

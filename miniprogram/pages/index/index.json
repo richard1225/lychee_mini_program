@@ -1,6 +1,16 @@
 {
   "usingComponents": {
     "cloud-tip-modal": "/components/cloudTipModal/index",
-    "l-button":"/miniprogram_npm/lin-ui/button/index"
+    "l-button": "/miniprogram_npm/lin-ui/button/index",
+    "custom-tab-bar": "/components/customTabBar/index",
+    "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index",
+    "l-collapse": "/miniprogram_npm/lin-ui/collapse/index",
+    "l-collapse-item": "/miniprogram_npm/lin-ui/collapse-item/index",
+    "l-card": "/miniprogram_npm/lin-ui/card/index",
+    "l-segment": "/miniprogram_npm/lin-ui/segment/index",
+    "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
+    "van-tabs": "/miniprogram_npm/@vant/weapp/tabs/index",
+    "van-tab": "/miniprogram_npm/@vant/weapp/tab/index",
+    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index"
   }
 }

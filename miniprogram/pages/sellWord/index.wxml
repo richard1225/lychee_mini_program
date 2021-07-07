@@ -1,0 +1,9 @@
+<!--miniprogram/pages/sellWord/index.wxml-->
+<view>
+  <van-empty
+    class="custom-image"
+    image="https://img.yzcdn.cn/vant/custom-empty-image.png"
+    description="没开发呢没开发呢"
+  />
+  <custom-tab-bar page-index="{{1}}"></custom-tab-bar>
+</view>
