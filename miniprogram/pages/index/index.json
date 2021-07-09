@@ -1,9 +1,10 @@
 {
   "usingComponents": {
     "cloud-tip-modal": "/components/cloudTipModal/index",
-    "l-button": "/miniprogram_npm/lin-ui/button/index",
+    "lychee-editor": "/components/editor/index",
+    "l-icon": "/miniprogram_npm/lin-ui/icon/index",
     "custom-tab-bar": "/components/customTabBar/index",
-    "l-search-bar": "/miniprogram_npm/lin-ui/search-bar/index",
+    "van-search": "/miniprogram_npm/@vant/weapp/search",
     "l-collapse": "/miniprogram_npm/lin-ui/collapse/index",
     "l-collapse-item": "/miniprogram_npm/lin-ui/collapse-item/index",
     "l-card": "/miniprogram_npm/lin-ui/card/index",
@@ -11,6 +12,7 @@
     "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
     "van-tabs": "/miniprogram_npm/@vant/weapp/tabs/index",
     "van-tab": "/miniprogram_npm/@vant/weapp/tab/index",
-    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index"
+    "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
+    "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index"
   }
 }

@@ -1,72 +1,54 @@
 //index.js
 const app = getApp()
-const { envList } = require('../../envList.js')
+const {
+  envList
+} = require('../../envList.js')
 
 Page({
   data: {
-    showUploadTip: false,
-    powerList: [{
-      title: '云函数',
-      tip: '安全、免鉴权运行业务代码',
-      showItem: false,
-      item: [{
-        title: '获取OpenId',
-        page: 'getOpenId'
-      },
-      //  {
-      //   title: '微信支付'
-      // },
-       {
-        title: '生成小程序码',
-        page: 'getMiniProgramCode'
-      },
-      // {
-      //   title: '发送订阅消息',
-      // }
-    ]
-    }, {
-      title: '数据库',
-      tip: '安全稳定的文档型数据库',
-      showItem: false,
-      item: [{
-        title: '创建集合',
-        page: 'createCollection'
-      }, {
-        title: '更新记录',
-        page: 'updateRecord'
-      }, {
-        title: '查询记录',
-        page: 'selectRecord'
-      }, {
-        title: '聚合操作',
-        page: 'sumRecord'
-      }]
-    }, {
-      title: '云存储',
-      tip: '自带CDN加速文件存储',
-      showItem: false,
-      item: [{
-        title: '上传文件',
-        page: 'uploadFile'
-      }]
-    }, {
-      title: '云托管',
-      tip: '不限语言的全托管容器服务',
-      showItem: false,
-      item: [{
-        title: '部署服务',
-        page: 'deployService'
-      }]
-    }],
+    query: '',
+    addWordShow: false,
     envList,
     selectedEnv: envList[0],
     haveCreateCollection: false
   },
 
-  changeTabs(e){
+  handleAddWord(){
+    this.setData({addWordShow: true})
+  },
+
+  beforeClose(action) {
+    console.log(action)
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        if (action === 'confirm') {
+          resolve(true);
+          console.log(action)
+        } else {
+          // 拦截取消操作
+          resolve(false);
+          console.log(action)
+        }
+      }, 1000);
+    })
+  },
+
+
+  onSearch(query) {
+    const {
+      detail
+    } = query
+    console.log(detail)
+  },
+
+  onCancel() {
+    this.query = ''
+  },
+
+  changeTabs(e) {
     console.log(e)
   },
-  
+
   onClickPowerInfo(e) {
     const index = e.currentTarget.dataset.index
     const powerList = this.data.powerList
@@ -86,7 +68,7 @@ Page({
       success: (res) => {
         this.onChangeSelectedEnv(res.tapIndex)
       },
-      fail (res) {
+      fail(res) {
         console.log(res.errMsg)
       }
     })
@@ -111,6 +93,10 @@ Page({
     wx.navigateTo({
       url: `/pages/${e.currentTarget.dataset.page}/index?envId=${this.data.selectedEnv.envId}`,
     })
+  },
+
+  onPullDownRefresh(...args) {
+    console.log(...args)
   },
 
   onClickDatabase(powerList) {

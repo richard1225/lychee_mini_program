@@ -32,5 +32,9 @@
     "navigationBarTitleText": "一颗荔枝小助手",
     "navigationBarTextStyle": "black"
   },
+
+  "networkTimeout": {
+    "request": 3000
+  },
   "sitemapLocation": "sitemap.json"
 }

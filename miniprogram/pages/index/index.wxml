@@ -1,13 +1,15 @@
 <!--index.wxml-->
-<view class="container"  >
-  <van-sticky  style="width: 100%">
-    <van-cell>
-      <view slot="title">
-        <l-search-bar class="search-bar-top" shape="circle" placeholder="搜索"></l-search-bar>
-      </view>
-    </van-cell>
+<view class="container">
+  <van-sticky style="width: 100%">
+    <van-search value="{{ query }}" placeholder="请输入搜索关键词" shape="round" use-action-slot bind:search="onSearch">
+      <l-icon name="add" slot="action" bindtap="handleAddWord" />
+      <!-- <l-button size="mini" slot="action">增加</l-button> -->
+    </van-search>
   </van-sticky>
 
+  <van-dialog use-slot title="标题" show="{{ addWordShow }}" bind:confirm="beforeClose" show-cancel-button>
+    <lychee-editor></lychee-editor>
+  </van-dialog>
 
   <!-- <view class="tabs-wrapper">
     <van-tabs swipeable line-width="40px" ellipsis="{{false}}">
@@ -21,9 +23,9 @@
     <l-collapse>
       <l-collapse-item title="Lin UI">
         关于如何缓解分离焦虑
-1、可以告诉小朋友我们长大了可以上幼儿园了，是鼓励、期待的方式跟他讲的。在家鼓励薏米做力所能及的事提高自信心和独立能力️
-2、跟他说，妈妈没有离开，什么时候就可以见到妈妈了，让他知道固定的时间会跟妈妈拜拜，但是在固定时间妈妈就会回来，孩子心里有这样的时间概念，就会有安全感。推荐一本绘本《魔法亲亲》 
-3、帮助孩子熟悉幼儿园的一日流程，先做什么再做什么，知道几点去上学几点放学，分离焦虑也很快就过渡了。
+        1、可以告诉小朋友我们长大了可以上幼儿园了，是鼓励、期待的方式跟他讲的。在家鼓励薏米做力所能及的事提高自信心和独立能力️
+        2、跟他说，妈妈没有离开，什么时候就可以见到妈妈了，让他知道固定的时间会跟妈妈拜拜，但是在固定时间妈妈就会回来，孩子心里有这样的时间概念，就会有安全感。推荐一本绘本《魔法亲亲》
+        3、帮助孩子熟悉幼儿园的一日流程，先做什么再做什么，知道几点去上学几点放学，分离焦虑也很快就过渡了。
       </l-collapse-item>
       <l-collapse-item title="Lin-CMS">
         Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套内容管理系统框架。
@@ -42,32 +44,6 @@
     </l-collapse>
   </l-card>
   <editor></editor>
-  <!-- <view class="title">快速了解云开发</view>
 
-  <view class="top_tip">免鉴权接口调用 免部署后台 高并发</view>
-  <l-button type="default">默认按钮</l-button>
-  <view class="power" wx:key="title" wx:for="{{powerList}}" wx:for-item="power">
-    <view class="power_info" data-index="{{index}}" bindtap="onClickPowerInfo">
-      <view class="power_info_text">
-        <view class="power_info_text_title">{{power.title}}</view>
-        <view class="power_info_text_tip">{{power.tip}}</view>
-      </view>
-      <image wx:if="{{!power.showItem}}" class="power_info_more" src="../../images/arrow.svg"></image>
-      <image wx:if="{{power.showItem}}" class="power_info_less" src="../../images/arrow.svg"></image>
-    </view>
-    <view wx:if="{{power.showItem}}">
-      <view wx:key="title" wx:for="{{power.item}}">
-        <view class="line"></view>
-        <view class="power_item" bindtap="jumpPage" data-page="{{item.page}}">
-          <view class="power_item_title">{{item.title}}</view>
-          <image class="power_item_icon" src="../../images/arrow.svg"></image>
-        </view>
-      </view>
-    </view>
-  </view>
-
-  <view class="environment" bindtap="onChangeShowEnvChoose">当前环境 {{ selectedEnv.alias }}</view> -->
-
-  <cloud-tip-modal showUploadTipProps="{{showUploadTip}}"></cloud-tip-modal>
   <custom-tab-bar page-index="{{0}}"></custom-tab-bar>
 </view>

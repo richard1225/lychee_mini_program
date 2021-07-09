@@ -1,0 +1,6 @@
+<!--components/editor/index.wxml-->
+<view class="container" style="height: 150rpx;">
+  <editor id="editor" class="ql-container" placeholder="请输入文案内容" bindstatuschange="onStatusChange"
+    bindready="onEditorReady">
+  </editor>
+</view>
