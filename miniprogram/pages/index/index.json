@@ -12,7 +12,9 @@
     "l-segment-item": "/miniprogram_npm/lin-ui/segment-item/index",
     "van-tabs": "/miniprogram_npm/@vant/weapp/tabs/index",
     "van-tab": "/miniprogram_npm/@vant/weapp/tab/index",
+    "van-field": "/miniprogram_npm/@vant/weapp/field/index",
     "van-cell": "/miniprogram_npm/@vant/weapp/cell/index",
+    "van-cell-group": "/miniprogram_npm/@vant/weapp/cell-group",
     "van-dialog": "/miniprogram_npm/@vant/weapp/dialog/index"
   }
 }

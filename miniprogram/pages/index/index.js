@@ -10,15 +10,55 @@ Page({
     addWordShow: false,
     envList,
     selectedEnv: envList[0],
-    haveCreateCollection: false
+    haveCreateCollection: false,
+    wordTrickObject: {
+      type: 'add', // add, id,
+      content: {}, // delta data
+      title: ''
+    },
+    title: ''
   },
 
-  handleAddWord(){
-    this.setData({addWordShow: true})
+  handleCloseDialog(event) {
+    console.log(event)
+    let dialog = event.detail.dialog
+    wx.nextTick(_ => {
+      dialog.setData({
+        loading: {
+          confirm: false,
+          cancel: false
+        }
+      })
+    })
+    dialog.setData({
+      show: false
+    })
   },
+
+  getUserInfo(event) {
+    console.log('userInfo;Get', event)
+    let dialog = event.detail.dialog
+    wx.nextTick(() => {
+      setTimeout(_ => {
+        dialog.setData({
+          loading: {
+            confirm: false,
+            cancel: false
+          }
+        })
+      }, 2000)
+    })
+    // dialog.setData({show: false})
+  },
+
+  handleAddWord() {
+    this.setData({
+      addWordShow: true
+    })
+  },
+
 
   beforeClose(action) {
-    console.log(action)
     return new Promise((resolve) => {
       setTimeout(() => {
         if (action === 'confirm') {

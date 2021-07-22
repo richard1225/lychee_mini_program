@@ -3,13 +3,12 @@
   <van-sticky style="width: 100%">
     <van-search value="{{ query }}" placeholder="请输入搜索关键词" shape="round" use-action-slot bind:search="onSearch">
       <l-icon name="add" slot="action" bindtap="handleAddWord" />
-      <!-- <l-button size="mini" slot="action">增加</l-button> -->
     </van-search>
   </van-sticky>
 
-  <van-dialog use-slot title="标题" show="{{ addWordShow }}" bind:confirm="beforeClose" show-cancel-button>
-    <lychee-editor></lychee-editor>
-  </van-dialog>
+
+  <lychee-editor model:add-word-show="{{ addWordShow }}"></lychee-editor>
+
 
   <!-- <view class="tabs-wrapper">
     <van-tabs swipeable line-width="40px" ellipsis="{{false}}">

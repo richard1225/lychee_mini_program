@@ -1,6 +1,14 @@
 <!--components/editor/index.wxml-->
-<view class="container" style="height: 150rpx;">
-  <editor id="editor" class="ql-container" placeholder="请输入文案内容" bindstatuschange="onStatusChange"
-    bindready="onEditorReady">
-  </editor>
-</view>
+<van-dialog use-slot width="700rpx" use-title-slot show="{{ addWordShow }}" show-cancel-button async-close="{{ true }}"
+  bind:confirm="getUserInfo" bind:cancel="handleCloseDialog">
+  <view slot="title">
+    <van-cell-group>
+      <van-field label="标题" model:value="{{ title }}" placeholder="请输入标题" border="{{ false }}" />
+    </van-cell-group>
+  </view>
+  <view class="container" style="margin: 0 10rpx">
+    <editor id="editor" class="editor-container" height="400rpx" placeholder="请输入文案内容" bindstatuschange="onStatusChange"
+      bindinput="onEditorInput" bindready="onEditorReady">
+    </editor>
+  </view>
+</van-dialog>
