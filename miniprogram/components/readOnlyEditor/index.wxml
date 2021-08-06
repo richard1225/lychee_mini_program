@@ -1,0 +1,4 @@
+<!--components/readOnlyEditor/index.wxml-->
+<editor id="editor" class="editor-container" height="400rpx" placeholder="请输入文案内容" bindstatuschange="onStatusChange"
+  bindinput="onEditorInput" bindready="onEditorReady">
+</editor>

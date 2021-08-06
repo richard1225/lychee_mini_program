@@ -5,7 +5,7 @@ page {
   padding-bottom: 60rpx;
 }
 
-.container{
+.container {
   margin-bottom: 80px;
 }
 
@@ -14,14 +14,35 @@ page {
   font-weight: 500;
   color: #000000;
   font-size: 44rpx;
-  margin-bottom: 40rpx;
 }
 
-.sell-word-content-card{
+.sell-word-content-card {
   margin-top: 20rpx;
+  width: 100%;
 }
 
-.tabs-wrapper{
+.sell-word-content-card .title-detail-content {
+  width: 100%;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+}
+.title-detail-content .l-icon{
+  margin-right: 16rpx;
+}
+.container .title{
+  display: flex;
+}
+
+.title .word-modify-wrapper{
+  display: flex;
+}
+
+.word-modify-wrapper .l-icon{
+  margin-left: 10rpx;
+}
+
+.tabs-wrapper {
   width: 100%;
 }
 

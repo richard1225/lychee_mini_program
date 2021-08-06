@@ -1,3 +1,6 @@
+import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog'
+import Notify from '../../miniprogram_npm/@vant/weapp/notify/notify'
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 //index.js
 const app = getApp()
 const {
@@ -11,12 +14,95 @@ Page({
     envList,
     selectedEnv: envList[0],
     haveCreateCollection: false,
-    wordTrickObject: {
-      type: 'add', // add, id,
-      content: {}, // delta data
-      title: ''
-    },
-    title: ''
+    wordTrickId: '', // add or id
+    wordList: []
+  },
+
+  onReady() {
+    this.search()
+  },
+
+  search(query = '') {
+    const toast = Toast.loading({
+      duration: 0, // 持续展示 toast
+      forbidClick: true,
+      message: '搜索中...',
+    })
+    query = typeof query === 'string' ? query : ''
+    let params = {
+      "opType": "search",
+      "query": query
+    }
+    let that = this
+    wx.cloud.callFunction({
+      name: 'modifyWord', // 云函数名称
+      data: params, // 传给云函数的参数
+      success: function ({
+        result
+      }) {
+        that.setData({
+          wordList: result.result
+        })
+        Toast.clear()
+      },
+      fail: function (params) {
+        Toast.clear()
+      }
+    })
+  },
+
+  handleModifyRow(event) {
+    let item = event.currentTarget.dataset.item
+
+    this.setData({
+      wordTrickId: item._id,
+      wordData: {
+        title: item.title,
+        content: item.content
+      }
+    })
+    let that = this
+    wx.nextTick(_ => {
+      that.setData({
+        addWordShow: true
+      })
+    })
+  },
+
+  handleDeleteRow(event) {
+    let {
+      _id,
+      title
+    } = event.currentTarget.dataset.item
+    Dialog.confirm({
+        title: '是否删除',
+        message: title,
+      })
+      .then(() => {
+        let params = {
+          "opType": "delete",
+          id: _id
+        }
+        let that = this
+        wx.cloud.callFunction({
+          name: 'modifyWord', // 云函数名称
+          data: params, // 传给云函数的参数
+          success: function () {
+            Notify({
+              type: 'success',
+              message: '删除成功'
+            })
+            that.search()
+          },
+          fail: function (params) {
+            console.error(params)
+          }
+        })
+      })
+      .catch(() => {
+        // on cancel
+      });
+
   },
 
   handleCloseDialog(event) {
@@ -53,7 +139,8 @@ Page({
 
   handleAddWord() {
     this.setData({
-      addWordShow: true
+      addWordShow: true,
+      wordTrickId: 'add'
     })
   },
 
@@ -78,11 +165,12 @@ Page({
     const {
       detail
     } = query
-    console.log(detail)
+    this.search(detail)
   },
 
   onCancel() {
     this.query = ''
+    this.search()
   },
 
   changeTabs(e) {

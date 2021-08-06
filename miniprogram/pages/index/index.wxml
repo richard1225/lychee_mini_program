@@ -1,13 +1,18 @@
 <!--index.wxml-->
 <view class="container">
+  <van-dialog id="van-dialog" />
+  <van-notify id="van-notify" />
+  <van-toast id="van-toast" />
   <van-sticky style="width: 100%">
-    <van-search value="{{ query }}" placeholder="请输入搜索关键词" shape="round" use-action-slot bind:search="onSearch">
+    <van-search value="{{ query }}" placeholder="请输入搜索关键词" shape="round" use-action-slot bind:clear="onCancel" bind:cancel="onCancel"
+      bind:search="onSearch">
       <l-icon name="add" slot="action" bindtap="handleAddWord" />
     </van-search>
   </van-sticky>
 
 
-  <lychee-editor model:add-word-show="{{ addWordShow }}"></lychee-editor>
+  <lychee-editor bind:search="search" model:add-word-show="{{ addWordShow }}" wordTrickId="{{ wordTrickId }}"
+    wordData="{{wordData}}"></lychee-editor>
 
 
   <!-- <view class="tabs-wrapper">
@@ -20,25 +25,18 @@
   <l-card class="sell-word-content-card" type="primary" plaintext="{{true}}">
     <!-- 此处为content -->
     <l-collapse>
-      <l-collapse-item title="Lin UI">
-        关于如何缓解分离焦虑
-        1、可以告诉小朋友我们长大了可以上幼儿园了，是鼓励、期待的方式跟他讲的。在家鼓励薏米做力所能及的事提高自信心和独立能力️
-        2、跟他说，妈妈没有离开，什么时候就可以见到妈妈了，让他知道固定的时间会跟妈妈拜拜，但是在固定时间妈妈就会回来，孩子心里有这样的时间概念，就会有安全感。推荐一本绘本《魔法亲亲》
-        3、帮助孩子熟悉幼儿园的一日流程，先做什么再做什么，知道几点去上学几点放学，分离焦虑也很快就过渡了。
-      </l-collapse-item>
-      <l-collapse-item title="Lin-CMS">
-        Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套内容管理系统框架。
-        Lin-CMS 可以有效的帮助开发者提高 CMS 的开发效率。Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套内容管理系统框架。
-        Lin-CMS 可以有效的帮助开发者提高 CMS 的开发效率。Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套内容管理系统框架。
-        Lin-CMS 可以有效的帮助开发者提高 CMS 的开发效率。Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套内容管理系统框架。
-        Lin-CMS 可以有效的帮助开发者提高 CMS 的开发效率。Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套内容管理系统框架。
-        Lin-CMS 可以有效的帮助开发者提高 CMS 的开发效率。Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套内容管理系统框架。
-        Lin-CMS 可以有效的帮助开发者提高 CMS 的开发效率。Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套内容管理系统框架。
-        Lin-CMS 可以有效的帮助开发者提高 CMS 的开发效率。Lin-CMS 是林间有风团队经过大量项目实践所提炼出的一套内容管理系统框架。
-        Lin-CMS 可以有效的帮助开发者提高 CMS 的开发效率。
-      </l-collapse-item>
-      <l-collapse-item title="林间有风">
-        林间有风是一个团队
+      <l-collapse-item wx:for="{{wordList}}" wx:key="unique" customTitle="{{true}}">
+        <view class="title" slot="title">
+          <view class="title-detail-content">
+            <l-icon name="down" size="16" color="#999" />{{item.title}}
+          </view>
+          <view class="word-modify-wrapper">
+            <l-icon name="edit" size="28" data-item="{{item}}" catchtap="handleModifyRow"></l-icon>
+            <l-icon name="delete" size="28" data-item="{{item}}" catchtap="handleDeleteRow"></l-icon>
+          </view>
+
+        </view>
+        <rich-text nodes="{{item.content.html}}"></rich-text>
       </l-collapse-item>
     </l-collapse>
   </l-card>
